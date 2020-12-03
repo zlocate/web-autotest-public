@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   dissection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 22:05:01 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:05:04 by rczarfun         ###   ########.fr       */
+/*   Created: 2020/12/03 22:04:53 by rczarfun          #+#    #+#             */
+/*   Updated: 2020/12/03 22:04:55 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *raw_string, ...)
+int	dissection(t_printf *tab)
 {
-	t_printf *tab;
-
-	if (!(tab = (t_printf*)malloc(sizeof(t_printf))))
-		return (-1);
-	tab->raw_string = raw_string;
-	tab = init(tab);
-	if (raw_string)
+	if (ft_strcmp(tab->raw_string, "%") == 0)
+		return (0);
+	while (tab->raw_string[tab->i] != '\0')
 	{
-		va_start(tab->args, raw_string);
-		tab->ret = dissection(tab);
-		va_end(tab->args);
+		if (tab->raw_string[tab->i] == '%')
+		{
+			reinit(tab);
+			handler(tab);
+		}
+		else
+		{
+			write(1, &tab->raw_string[tab->i], 1);
+			tab->ret++;
+		}
+		tab->i++;
 	}
-	free(tab);
 	return (tab->ret);
 }

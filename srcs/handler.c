@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 22:05:01 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:05:04 by rczarfun         ###   ########.fr       */
+/*   Created: 2020/12/03 22:06:57 by rczarfun          #+#    #+#             */
+/*   Updated: 2020/12/03 22:06:58 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *raw_string, ...)
+int		handler(t_printf *tab)
 {
-	t_printf *tab;
-
-	if (!(tab = (t_printf*)malloc(sizeof(t_printf))))
-		return (-1);
-	tab->raw_string = raw_string;
-	tab = init(tab);
-	if (raw_string)
-	{
-		va_start(tab->args, raw_string);
-		tab->ret = dissection(tab);
-		va_end(tab->args);
-	}
-	free(tab);
+	tab->i++;
+	parse_flags(tab);
+	parse_width(tab);
+	parse_precision(tab);
+	parse_length(tab);
+	parse_type(tab);
+	handle_hub(tab);
 	return (tab->ret);
 }

@@ -6,7 +6,7 @@
 #    By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/25 19:05:31 by dhojt             #+#    #+#              #
-#    Updated: 2020/12/03 21:09:47 by rczarfun         ###   ########.fr        #
+#    Updated: 2020/12/03 22:00:48 by rczarfun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,26 +23,22 @@ SRC_DIR =	srcs/
 LIB_DIR =	srcs/libft/
 
 CFILE =		ft_printf.c \
-			treatment.c \
-			initialize.c \
-			parser.c \
-			parse_convert.c \
-			parse_field_width.c \
-			parse_precision.c \
-			parse_arguments.c \
-			parse_specifier.c \
-			switch_display.c \
-			display_d.c \
-			display_c.c \
-			display_s.c \
-			display_u.c \
-			display_x.c \
-			display_o.c \
-			display_p.c \
-			display_ws.c \
-			display_gap.c \
-			display_wchar.c \
-			display_other.c
+			dissection.c \
+			init.c \
+			parsers.c \
+			handler.c \
+			handle_hub.c \
+			handle_d.c \
+			handle_c.c \
+			handle_s.c \
+			handle_u.c \
+			handle_x.c \
+			handle_o.c \
+			handle_p.c \
+			handle_ws.c \
+			put_filling.c \
+			put_wchar_ret.c \
+			handle_other.c
 
 CFIND =		$(CFILE:%=$(SRC_DIR)%)
 

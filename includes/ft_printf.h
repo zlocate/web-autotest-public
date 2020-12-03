@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 17:52:26 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 21:06:16 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 21:46:57 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,9 @@
 # include <limits.h>
 # include <stdlib.h>
 
-/*
-** raw_string: string (first ft_printf parameter).
-** f_copy: copy of raw_string.
-** f_treat: copy of raw_string.
-** args: stores caradic arguments.
-** len: ft_printf return value (number of printed characters).
-** i: position of read in raw_string string.
-*/
-
 typedef struct	s_printf
 {
 	const char	*raw_string;
-	char		*f_copy;
-	char		*f_treat;
 	va_list		args;
 	int			ret;
 	size_t		i;
@@ -48,8 +37,8 @@ typedef struct	s_printf
 }				t_printf;
 
 int				ft_printf(const char *raw_string, ...);
-int				treatement(t_printf *tab);
-int				parser(t_printf *tab);
+int				dissection(t_printf *tab);
+int				handler(t_printf *tab);
 
 t_printf		*init(t_printf *tab);
 t_printf		*reinit(t_printf *tab);
@@ -57,10 +46,10 @@ t_printf		*reinit(t_printf *tab);
 t_printf		*parse_flags(t_printf *tab);
 t_printf		*parse_width(t_printf *tab);
 t_printf		*parse_precision(t_printf *tab);
-t_printf		*parse_lengh(t_printf *tab);
+t_printf		*parse_length(t_printf *tab);
 t_printf		*parse_type(t_printf *tab);
 
-t_printf		*handler(t_printf *tab);
+t_printf		*handle_hub(t_printf *tab);
 t_printf		*handle_d(t_printf *tab);
 t_printf		*handle_s(t_printf *tab);
 t_printf		*handle_c(t_printf *tab);
