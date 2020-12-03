@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:57:01 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 20:52:08 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:25:47 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
-#include <limits.h>
 
 static uintmax_t	get_num(t_tab *tab)
 {

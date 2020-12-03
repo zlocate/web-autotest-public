@@ -7,6 +7,7 @@
 
 int main(void){
 	int q = 123;
+	printf("%xi\n", q);
 	ft_printf("%xi", q);
 	return 0;
 }

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_o.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:30:20 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 20:51:22 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:25:30 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
-#include <limits.h>
 
 static void			print_leading_zero(uintmax_t num, char hash)
 {

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_u.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:41:03 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 10:02:26 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:25:59 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
-#include <limits.h>
 
 static uintmax_t	get_num(t_tab *tab)
 {
@@ -59,7 +57,7 @@ static t_tab		*do_u(t_tab *tab, uintmax_t num, int num_width, int left)
 	if (!left)
 		display_gap(tab, ' ', tab->field_width - not_blank, 0);
 	display_gap(tab, '0', tab->precision - num_width, 0);
-	ft_putnbrumax_fd(num, 1);
+	ft_putnbrmax_u(num);
 	if (left)
 		display_gap(tab, ' ', tab->field_width - not_blank, 0);
 	return (tab);

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   switch_display.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 15:06:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 09:56:08 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 18:09:35 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 t_tab		*switch_display(t_tab *tab)
 {

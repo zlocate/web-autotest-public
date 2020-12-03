@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_wchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 18:40:25 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 13:33:31 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:25:51 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
 static void		oct_4(wint_t c)
 {

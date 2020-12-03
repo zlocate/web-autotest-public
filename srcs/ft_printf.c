@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:52:37 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 20:28:05 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:26:15 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <ctype.h>
 #include "ft_printf.h"
 
 int		ft_printf(const char *format, ...)

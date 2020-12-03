@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 09:59:55 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:24:55 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
-#include <limits.h>
 
 static intmax_t	get_num(t_tab *tab)
 {
@@ -85,7 +83,7 @@ static t_tab	*do_d(t_tab *tab, intmax_t num, int num_width, int align_left)
 		write(1, &negatvity_placeholder, 1);
 	display_gap(tab, '0', tab->precision - num_width, 0);
 	if (num != (-9223372036854775807 - 1))
-		ft_putnbrmax_fd(num, 1);
+		ft_putnbrmax(num);
 	else if ((tab->len += 18) > 0)
 		write(1, "9223372036854775808", 19);
 	if (align_left)

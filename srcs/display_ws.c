@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_ws.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 13:22:17 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:25:54 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <ctype.h>
-#include <stdlib.h>
 
 static int		char_len(wchar_t c)
 {

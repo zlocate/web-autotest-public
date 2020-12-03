@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   treatment.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:55:14 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 03:12:48 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:26:22 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdarg.h>
-#include <unistd.h>
 #include "ft_printf.h"
 
 int		treatement(t_tab *tab)

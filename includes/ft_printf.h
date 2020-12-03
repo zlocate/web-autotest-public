@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/25 19:46:06 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/02 15:32:49 by rczarfun         ###   ########.fr       */
+/*   Created: 2020/12/03 17:52:26 by rczarfun          #+#    #+#             */
+/*   Updated: 2020/12/03 19:39:27 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@
 # define CONVERTERS "-+ 0#"
 # define ARGUMENTS "lhjz"
 
-# include <stdarg.h>
+# include "../srcs/libft/libft.h"
 # include <ctype.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdlib.h>
 
 /*
 ** format: string (first ft_printf parameter).
@@ -26,7 +30,6 @@
 ** args: stores caradic arguments.
 ** len: ft_printf return value (number of printed characters).
 ** i: position of read in format string.
-** masks contain strings of chars for the respective flags, used for matching.
 */
 
 typedef struct	s_tab

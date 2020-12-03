@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 02:46:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 10:00:19 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:24:41 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
-#include <ctype.h>
 
 t_tab			*display_c(t_tab *tab)
 {

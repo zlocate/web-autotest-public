@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display_gap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:49:36 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 20:50:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 19:25:20 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
-#include <stdlib.h>
 
 void	display_gap(t_tab *tab, char c, int len, int update_len)
 {
