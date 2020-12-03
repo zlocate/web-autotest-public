@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 15:06:57 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 20:23:55 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:33:06 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ t_printf		*handler(t_printf *tab)
 {
 	char	*flag;
 
-	flag = &tab->specifier_flag;
+	flag = &tab->type;
 	if (*flag == 'd' || *flag == 'i' || *flag == 'D')
 		handle_d(tab);
 	else if (*flag == 'c' || *flag == 'C')
 		handle_c(tab);
-	else if (*flag == 's' && ft_strcmp(tab->argument_flag, "l") == 0)
+	else if (*flag == 's' && ft_strcmp(tab->length, "l") == 0)
 		handle_ws(tab);
 	else if (*flag == 's')
 		handle_s(tab);

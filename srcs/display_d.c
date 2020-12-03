@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 20:19:00 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 21:06:16 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ static intmax_t	get_num(t_printf *tab)
 {
 	intmax_t	num;
 
-	if (tab->specifier_flag == 'D')
+	if (tab->type == 'D')
 		num = (long)(va_arg(tab->args, long int));
-	else if (ft_strcmp(tab->argument_flag, "hh") == 0)
+	else if (ft_strcmp(tab->length, "hh") == 0)
 		num = (signed char)(va_arg(tab->args, int));
-	else if (ft_strcmp(tab->argument_flag, "h") == 0)
+	else if (ft_strcmp(tab->length, "h") == 0)
 		num = (short)(va_arg(tab->args, int));
-	else if (ft_strcmp(tab->argument_flag, "ll") == 0)
+	else if (ft_strcmp(tab->length, "ll") == 0)
 		num = (long long)(va_arg(tab->args, long long int));
-	else if (ft_strcmp(tab->argument_flag, "l") == 0)
+	else if (ft_strcmp(tab->length, "l") == 0)
 		num = (long)(va_arg(tab->args, long int));
-	else if (ft_strcmp(tab->argument_flag, "j") == 0)
+	else if (ft_strcmp(tab->length, "j") == 0)
 		num = (intmax_t)(va_arg(tab->args, intmax_t));
-	else if (ft_strcmp(tab->argument_flag, "z") == 0)
+	else if (ft_strcmp(tab->length, "z") == 0)
 		num = (size_t)(va_arg(tab->args, size_t));
 	else
 		num = (int)(va_arg(tab->args, int));
@@ -52,7 +52,7 @@ static char		get_negatvity_placeholder(t_printf *tab, int is_negative)
 {
 	char	*tmp;
 
-	tmp = tab->convert;
+	tmp = tab->flags;
 	if (is_negative)
 		return ('-');
 	if (tmp[1] == '+')
@@ -76,18 +76,18 @@ static t_printf	*do_d(t_printf *tab, intmax_t num, int num_width, int align_left
 		not_blank = tab->precision;
 	if (negatvity_placeholder)
 		not_blank++;
-	tab->len += (not_blank <= tab->field_width) ? tab->field_width : not_blank;
+	tab->ret += (not_blank <= tab->width) ? tab->width : not_blank;
 	if (!align_left)
-		display_gap(tab, ' ', tab->field_width - not_blank, 0);
+		put_filling(tab, ' ', tab->width - not_blank, 0);
 	if (negatvity_placeholder)
 		write(1, &negatvity_placeholder, 1);
-	display_gap(tab, '0', tab->precision - num_width, 0);
+	put_filling(tab, '0', tab->precision - num_width, 0);
 	if (num != (-9223372036854775807 - 1))
 		ft_putnbrmax(num);
-	else if ((tab->len += 18) > 0)
+	else if ((tab->ret += 18) > 0)
 		write(1, "9223372036854775808", 19);
 	if (align_left)
-		display_gap(tab, ' ', tab->field_width - not_blank, 0);
+		put_filling(tab, ' ', tab->width - not_blank, 0);
 	return (tab);
 }
 
@@ -100,19 +100,19 @@ t_printf			*handle_d(t_printf *tab)
 	num = get_num(tab);
 	if (num == 0 && tab->precision == 0)
 	{
-		if (tab->convert[1] == '+')
-			display_wchar('+', tab);
-		if (tab->convert[2] == ' ')
-			display_wchar(' ', tab);
-		display_gap(tab, ' ', tab->field_width, 1);
+		if (tab->flags[1] == '+')
+			put_wchar_ret('+', tab);
+		if (tab->flags[2] == ' ')
+			put_wchar_ret(' ', tab);
+		put_filling(tab, ' ', tab->width, 1);
 		return (tab);
 	}
 	num_width = get_tens(num);
-	align_left = (tab->convert[0] == '-') ? 1 : 0;
-	if (tab->convert[3] == '0' && tab->precision == -1 && !tab->convert[0])
+	align_left = (tab->flags[0] == '-') ? 1 : 0;
+	if (tab->flags[3] == '0' && tab->precision == -1 && !tab->flags[0])
 	{
-		tab->precision = tab->field_width;
-		if (num < 0 || tab->convert[2] || tab->convert[1] || tab->convert[0])
+		tab->precision = tab->width;
+		if (num < 0 || tab->flags[2] || tab->flags[1] || tab->flags[0])
 			tab->precision--;
 	}
 	do_d(tab, num, num_width, align_left);

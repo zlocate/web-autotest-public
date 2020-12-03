@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dhojt <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/25 19:05:31 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/29 01:02:24 by dhojt            ###   ########.fr        #
+#    Updated: 2020/12/03 21:09:47 by rczarfun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ LIB_DIR =	srcs/libft/
 CFILE =		ft_printf.c \
 			treatment.c \
 			initialize.c \
-			reinitialize.c \
 			parser.c \
 			parse_convert.c \
 			parse_field_width.c \

@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:54:12 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 20:26:23 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:40:44 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	parser(t_printf *tab)
 		else
 		{
 			write(1, &tab->f_copy[tab->i], 1);
-			tab->len++;
+			tab->ret++;
 		}
 		tab->i++;
 	}
-	return (tab->len);
+	return (tab->ret);
 }

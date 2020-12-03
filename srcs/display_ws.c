@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 20:20:39 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 21:06:16 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ static t_printf	*do_null(t_printf *tab)
 	if (tab->precision > -1)
 	{
 		while (s[i] && tab->precision-- > 0)
-			display_wchar(s[i++], tab);
+			put_wchar_ret(s[i++], tab);
 	}
 	else
 	{
 		while (s[i])
-			display_wchar(s[i++], tab);
+			put_wchar_ret(s[i++], tab);
 	}
 	free(s);
 	return (tab);
@@ -92,13 +92,13 @@ t_printf			*handle_ws(t_printf *tab)
 			break ;
 		len += char_len(s[i++]);
 	}
-	if (tab->convert[3] == '0' && tab->convert[0] != '-')
-		display_gap(tab, '0', tab->field_width - len, 1);
-	else if (tab->convert[0] != '-')
-		display_gap(tab, ' ', tab->field_width - len, 1);
+	if (tab->flags[3] == '0' && tab->flags[0] != '-')
+		put_filling(tab, '0', tab->width - len, 1);
+	else if (tab->flags[0] != '-')
+		put_filling(tab, ' ', tab->width - len, 1);
 	while (j < i)
-		display_wchar(s[j++], tab);
-	if (tab->convert[0] == '-')
-		display_gap(tab, ' ', tab->field_width - len, 1);
+		put_wchar_ret(s[j++], tab);
+	if (tab->flags[0] == '-')
+		put_filling(tab, ' ', tab->width - len, 1);
 	return (tab);
 }
