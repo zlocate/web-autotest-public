@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 17:44:18 by rczarfun          #+#    #+#             */
-/*   Updated: 2019/11/06 03:10:42 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:24:29 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	joinbuff(char **s, int ret, char *buff)
 	buff[ret] = '\0';
 	if (*s == NULL)
 	{
-		if(!(*s = ft_strdup(buff)))
+		if (!(*s = ft_strdup(buff)))
 			exit(0);
 	}
 	else

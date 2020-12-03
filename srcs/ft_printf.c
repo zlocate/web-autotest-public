@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:05:01 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:05:04 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:10:38 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int		ft_printf(const char *raw_string, ...)
 {
-	t_printf *tab;
+	t_printf *props;
 
-	if (!(tab = (t_printf*)malloc(sizeof(t_printf))))
+	if (!(props = (t_printf*)malloc(sizeof(t_printf))))
 		return (-1);
-	tab->raw_string = raw_string;
-	tab = init(tab);
+	props->raw_string = raw_string;
+	props = init(props);
 	if (raw_string)
 	{
-		va_start(tab->args, raw_string);
-		tab->ret = dissection(tab);
-		va_end(tab->args);
+		va_start(props->args, raw_string);
+		props->ret = dissection(props);
+		va_end(props->args);
 	}
-	free(tab);
-	return (tab->ret);
+	free(props);
+	return (props->ret);
 }

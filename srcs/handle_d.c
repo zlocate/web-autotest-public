@@ -6,53 +6,53 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:05:19 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:05:21 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:23:05 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static intmax_t	get_num(t_printf *tab)
+static intmax_t	get_num(t_printf *props)
 {
-	intmax_t	num;
+	intmax_t	n;
 
-	if (tab->type == 'D')
-		num = (long)(va_arg(tab->args, long int));
-	else if (ft_strcmp(tab->length, "hh") == 0)
-		num = (signed char)(va_arg(tab->args, int));
-	else if (ft_strcmp(tab->length, "h") == 0)
-		num = (short)(va_arg(tab->args, int));
-	else if (ft_strcmp(tab->length, "ll") == 0)
-		num = (long long)(va_arg(tab->args, long long int));
-	else if (ft_strcmp(tab->length, "l") == 0)
-		num = (long)(va_arg(tab->args, long int));
-	else if (ft_strcmp(tab->length, "j") == 0)
-		num = (intmax_t)(va_arg(tab->args, intmax_t));
-	else if (ft_strcmp(tab->length, "z") == 0)
-		num = (size_t)(va_arg(tab->args, size_t));
+	if (props->type == 'D')
+		n = (long)(va_arg(props->args, long int));
+	else if (ft_strcmp(props->length, "hh") == 0)
+		n = (signed char)(va_arg(props->args, int));
+	else if (ft_strcmp(props->length, "h") == 0)
+		n = (short)(va_arg(props->args, int));
+	else if (ft_strcmp(props->length, "ll") == 0)
+		n = (long long)(va_arg(props->args, long long int));
+	else if (ft_strcmp(props->length, "l") == 0)
+		n = (long)(va_arg(props->args, long int));
+	else if (ft_strcmp(props->length, "j") == 0)
+		n = (intmax_t)(va_arg(props->args, intmax_t));
+	else if (ft_strcmp(props->length, "z") == 0)
+		n = (size_t)(va_arg(props->args, size_t));
 	else
-		num = (int)(va_arg(tab->args, int));
-	num = (intmax_t)num;
-	return (num);
+		n = (int)(va_arg(props->args, int));
+	n = (intmax_t)n;
+	return (n);
 }
 
-static int		get_tens(intmax_t num)
+static int		get_tens(intmax_t n)
 {
 	int tens;
 
-	if (num < 0)
-		num *= -1;
+	if (n < 0)
+		n *= -1;
 	tens = 1;
-	while ((num /= 10) > 0)
+	while ((n /= 10) > 0)
 		tens++;
 	return (tens);
 }
 
-static char		get_negatvity_placeholder(t_printf *tab, int is_negative)
+static char		get_negatvity_placeholder(t_printf *props, int is_negative)
 {
 	char	*tmp;
 
-	tmp = tab->flags;
+	tmp = props->flags;
 	if (is_negative)
 		return ('-');
 	if (tmp[1] == '+')
@@ -62,59 +62,59 @@ static char		get_negatvity_placeholder(t_printf *tab, int is_negative)
 	return ('\0');
 }
 
-static t_printf	*do_d(t_printf *tab, intmax_t num, int num_width, int align_left)
+static t_printf	*do_d(t_printf *props, intmax_t n, int n_width, int align_left)
 {
 	int			not_blank;
 	char		negatvity_placeholder;
 	int			is_negative;
 
-	is_negative = (num < 0) ? 1 : 0;
-	num *= (is_negative && num != (-9223372036854775807 - 1)) ? -1 : 1;
-	negatvity_placeholder = get_negatvity_placeholder(tab, is_negative);
-	not_blank = num_width;
-	if (num_width <= tab->precision && tab->precision >= 0)
-		not_blank = tab->precision;
+	is_negative = (n < 0) ? 1 : 0;
+	n *= (is_negative && n != (-9223372036854775807 - 1)) ? -1 : 1;
+	negatvity_placeholder = get_negatvity_placeholder(props, is_negative);
+	not_blank = n_width;
+	if (n_width <= props->precision && props->precision >= 0)
+		not_blank = props->precision;
 	if (negatvity_placeholder)
 		not_blank++;
-	tab->ret += (not_blank <= tab->width) ? tab->width : not_blank;
+	props->ret += (not_blank <= props->width) ? props->width : not_blank;
 	if (!align_left)
-		put_filling(tab, ' ', tab->width - not_blank, 0);
+		put_filling(props, ' ', props->width - not_blank, 0);
 	if (negatvity_placeholder)
 		write(1, &negatvity_placeholder, 1);
-	put_filling(tab, '0', tab->precision - num_width, 0);
-	if (num != (-9223372036854775807 - 1))
-		ft_putnbrmax(num);
-	else if ((tab->ret += 18) > 0)
+	put_filling(props, '0', props->precision - n_width, 0);
+	if (n != (-9223372036854775807 - 1))
+		ft_putnbrmax(n);
+	else if ((props->ret += 18) > 0)
 		write(1, "9223372036854775808", 19);
 	if (align_left)
-		put_filling(tab, ' ', tab->width - not_blank, 0);
-	return (tab);
+		put_filling(props, ' ', props->width - not_blank, 0);
+	return (props);
 }
 
-t_printf			*handle_d(t_printf *tab)
+t_printf		*handle_d(t_printf *props)
 {
-	intmax_t	num;
-	int			num_width;
+	intmax_t	n;
+	int			n_width;
 	int			align_left;
 
-	num = get_num(tab);
-	if (num == 0 && tab->precision == 0)
+	n = get_num(props);
+	if (n == 0 && props->precision == 0)
 	{
-		if (tab->flags[1] == '+')
-			put_wchar_ret('+', tab);
-		if (tab->flags[2] == ' ')
-			put_wchar_ret(' ', tab);
-		put_filling(tab, ' ', tab->width, 1);
-		return (tab);
+		if (props->flags[1] == '+')
+			put_wchar_ret('+', props);
+		if (props->flags[2] == ' ')
+			put_wchar_ret(' ', props);
+		put_filling(props, ' ', props->width, 1);
+		return (props);
 	}
-	num_width = get_tens(num);
-	align_left = (tab->flags[0] == '-') ? 1 : 0;
-	if (tab->flags[3] == '0' && tab->precision == -1 && !tab->flags[0])
+	n_width = get_tens(n);
+	align_left = (props->flags[0] == '-') ? 1 : 0;
+	if (props->flags[3] == '0' && props->precision == -1 && !props->flags[0])
 	{
-		tab->precision = tab->width;
-		if (num < 0 || tab->flags[2] || tab->flags[1] || tab->flags[0])
-			tab->precision--;
+		props->precision = props->width;
+		if (n < 0 || props->flags[2] || props->flags[1] || props->flags[0])
+			props->precision--;
 	}
-	do_d(tab, num, num_width, align_left);
-	return (tab);
+	do_d(props, n, n_width, align_left);
+	return (props);
 }

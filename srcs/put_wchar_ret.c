@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:07:37 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:07:38 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:10:38 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,26 @@ static void		oct_1(wint_t c)
 	write(1, &c, 1);
 }
 
-void			put_wchar_ret(wint_t c, t_printf *tab)
+void			put_wchar_ret(wint_t c, t_printf *props)
 {
 	if (c <= 127)
 	{
-		tab->ret += 1;
+		props->ret += 1;
 		oct_1(c);
 	}
 	if (c >= 127 && c <= 2047)
 	{
-		tab->ret += 2;
+		props->ret += 2;
 		oct_2(c);
 	}
 	if (c >= 2048 && c <= 65535)
 	{
-		tab->ret += 3;
+		props->ret += 3;
 		oct_3(c);
 	}
 	if (c >= 65536 && c <= 2097151)
 	{
-		tab->ret += 4;
+		props->ret += 4;
 		oct_4(c);
 	}
 }

@@ -6,15 +6,15 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:06:43 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:06:44 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:26:26 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void			print_leading_zero(uintmax_t num, char hash, char x)
+static void			print_leading_zero(uintmax_t n, char hash, char x)
 {
-	if (num)
+	if (n)
 	{
 		if (hash == '#' && x == 'x')
 			write(1, "0x", 2);
@@ -23,77 +23,78 @@ static void			print_leading_zero(uintmax_t num, char hash, char x)
 	}
 }
 
-static uintmax_t	get_num(t_printf *tab)
+static uintmax_t	get_num(t_printf *props)
 {
-	uintmax_t	num;
+	uintmax_t	n;
 
-	if (ft_strcmp(tab->length, "hh") == 0)
-		num = (unsigned char)(va_arg(tab->args, unsigned int));
-	else if (ft_strcmp(tab->length, "h") == 0)
-		num = (unsigned short)(va_arg(tab->args, unsigned int));
-	else if (ft_strcmp(tab->length, "ll") == 0)
-		num = (unsigned long long)(va_arg(tab->args, unsigned long long int));
-	else if (ft_strcmp(tab->length, "l") == 0)
-		num = (unsigned long)(va_arg(tab->args, unsigned long int));
-	else if (ft_strcmp(tab->length, "j") == 0)
-		num = (uintmax_t)(va_arg(tab->args, uintmax_t));
-	else if (ft_strcmp(tab->length, "z") == 0)
-		num = (size_t)(va_arg(tab->args, size_t));
+	if (ft_strcmp(props->length, "hh") == 0)
+		n = (unsigned char)(va_arg(props->args, unsigned int));
+	else if (ft_strcmp(props->length, "h") == 0)
+		n = (unsigned short)(va_arg(props->args, unsigned int));
+	else if (ft_strcmp(props->length, "ll") == 0)
+		n = (unsigned long long)(va_arg(props->args, unsigned long long int));
+	else if (ft_strcmp(props->length, "l") == 0)
+		n = (unsigned long)(va_arg(props->args, unsigned long int));
+	else if (ft_strcmp(props->length, "j") == 0)
+		n = (uintmax_t)(va_arg(props->args, uintmax_t));
+	else if (ft_strcmp(props->length, "z") == 0)
+		n = (size_t)(va_arg(props->args, size_t));
 	else
-		num = (unsigned int)(va_arg(tab->args, unsigned int));
-	num = (uintmax_t)num;
-	return (num);
+		n = (unsigned int)(va_arg(props->args, unsigned int));
+	n = (uintmax_t)n;
+	return (n);
 }
 
-static t_printf		*do_x(t_printf *tab, uintmax_t num, char *str, int align_left)
+static t_printf		*do_x(t_printf *props, uintmax_t n, char *str, int align_l)
 {
 	int			n_b;
 	int			n_w;
 
-	if ((n_w = ft_strlen(str)) && tab->flags[4] == '#' && num &&
-			tab->flags[3] == '0' && tab->width)
+	if ((n_w = ft_strlen(str)) && props->flags[4] == '#' && n &&
+			props->flags[3] == '0' && props->width)
 		n_w += 2;
-	else if ((n_w = ft_strlen(str)) && tab->flags[4] == '#' && num)
+	else if ((n_w = ft_strlen(str)) && props->flags[4] == '#' && n)
 	{
-		tab->width -= 2;
-		tab->ret += 2;
+		props->width -= 2;
+		props->ret += 2;
 	}
-	n_b = (n_w <= tab->precision && tab->precision > 0) ? tab->precision : n_w;
-	tab->ret += (n_b <= tab->width) ? tab->width : n_b;
-	if (!align_left)
-		put_filling(tab, ' ', tab->width - n_b, 0);
-	print_leading_zero(num, tab->flags[4], tab->type);
-	put_filling(tab, '0', tab->precision - n_w, 0);
+	n_b = (n_w <= props->precision &&
+	props->precision > 0) ? props->precision : n_w;
+	props->ret += (n_b <= props->width) ? props->width : n_b;
+	if (!align_l)
+		put_filling(props, ' ', props->width - n_b, 0);
+	print_leading_zero(n, props->flags[4], props->type);
+	put_filling(props, '0', props->precision - n_w, 0);
 	ft_putstr(str);
-	if (align_left)
-		put_filling(tab, ' ', tab->width - n_b, 0);
-	return (tab);
+	if (align_l)
+		put_filling(props, ' ', props->width - n_b, 0);
+	return (props);
 }
 
-t_printf				*handle_x(t_printf *tab)
+t_printf			*handle_x(t_printf *props)
 {
 	char		*str;
 	char		c;
-	uintmax_t	num;
+	uintmax_t	n;
 	int			align_left;
 
 	align_left = 0;
-	num = get_num(tab);
-	if (num == 0 && tab->precision == 0)
+	n = get_num(props);
+	if (n == 0 && props->precision == 0)
 	{
-		put_filling(tab, ' ', tab->width, 1);
-		return (tab);
+		put_filling(props, ' ', props->width, 1);
+		return (props);
 	}
 	c = 'a';
-	if (tab->type == 'X')
+	if (props->type == 'X')
 		c = 'A';
-	if (!(str = ft_itoa_base(num, 16, c)))
+	if (!(str = ft_itoa_base(n, 16, c)))
 		exit(-1);
-	if (tab->flags[0] == '-')
+	if (props->flags[0] == '-')
 		align_left = 1;
-	if (tab->flags[3] == '0' && tab->precision == -1 && !tab->flags[0])
-		tab->precision = tab->width;
-	do_x(tab, num, str, align_left);
+	if (props->flags[3] == '0' && props->precision == -1 && !props->flags[0])
+		props->precision = props->width;
+	do_x(props, n, str, align_left);
 	free(str);
-	return (tab);
+	return (props);
 }

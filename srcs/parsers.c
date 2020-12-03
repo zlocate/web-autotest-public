@@ -6,66 +6,68 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:07:17 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:07:18 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:21:55 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_printf		*parse_flags(t_printf *tab)
+t_printf		*parse_flags(t_printf *props)
 {
 	size_t	i;
 
 	i = 0;
 	while (FLAGS[i] != '\0')
 	{
-		while (FLAGS[i] == tab->raw_string[tab->i])
+		while (FLAGS[i] == props->raw_string[props->i])
 		{
-			while (tab->raw_string[tab->i] == '-' && tab->i++)
-				tab->flags[0] = '-';
-			while (tab->raw_string[tab->i] == '+' && tab->i++)
-				tab->flags[1] = '+';
-			while (tab->raw_string[tab->i] == ' ' && tab->i++)
-				tab->flags[2] = ' ';
-			while (tab->raw_string[tab->i] == '0' && tab->i++)
-				tab->flags[3] = '0';
-			while (tab->raw_string[tab->i] == '#' && tab->i++)
-				tab->flags[4] = '#';
+			while (props->raw_string[props->i] == '-' && props->i++)
+				props->flags[0] = '-';
+			while (props->raw_string[props->i] == '+' && props->i++)
+				props->flags[1] = '+';
+			while (props->raw_string[props->i] == ' ' && props->i++)
+				props->flags[2] = ' ';
+			while (props->raw_string[props->i] == '0' && props->i++)
+				props->flags[3] = '0';
+			while (props->raw_string[props->i] == '#' && props->i++)
+				props->flags[4] = '#';
 			i = 0;
 		}
 		i++;
 	}
-	return (tab);
+	return (props);
 }
 
-t_printf	*parse_width(t_printf *tab)
+t_printf		*parse_width(t_printf *props)
 {
-	while (tab->raw_string[tab->i] >= '0' && tab->raw_string[tab->i] <= '9')
+	while (props->raw_string[props->i] >= '0' &&
+	props->raw_string[props->i] <= '9')
 	{
-		tab->width *= 10;
-		tab->width += (tab->raw_string[tab->i] - 48);
-		tab->i++;
+		props->width *= 10;
+		props->width += (props->raw_string[props->i] - 48);
+		props->i++;
 	}
-	return (tab);
+	return (props);
 }
 
-t_printf	*parse_precision(t_printf *tab)
+t_printf		*parse_precision(t_printf *props)
 {
-	while (tab->raw_string[tab->i] == '.')
+	while (props->raw_string[props->i] == '.')
 	{
-		tab->i++;
-		tab->precision = 0;
+		props->i++;
+		props->precision = 0;
 	}
-	while (tab->raw_string[tab->i] >= '0' && tab->raw_string[tab->i] <= '9')
+	while (props->raw_string[props->i] >= '0' &&
+	props->raw_string[props->i] <= '9')
 	{
-		tab->precision *= 10;
-		tab->precision += (tab->raw_string[tab->i] - 48);
-		tab->i++;
+		props->precision *= 10;
+		props->precision += (props->raw_string[props->i] - 48);
+		props->i++;
 	}
-	return (tab);
+	return (props);
 }
 
-t_printf		*parse_length(t_printf *tab)
+t_printf		*parse_length(t_printf *props)
 {
 	size_t	i;
 	size_t	j;
@@ -74,28 +76,28 @@ t_printf		*parse_length(t_printf *tab)
 	j = 0;
 	while (LENGTHS[i] != '\0')
 	{
-		while (LENGTHS[i] == tab->raw_string[tab->i])
+		while (LENGTHS[i] == props->raw_string[props->i])
 		{
-			tab->length[j] = tab->raw_string[tab->i];
-			tab->length[j + 1] = '\0';
-			tab->i++;
+			props->length[j] = props->raw_string[props->i];
+			props->length[j + 1] = '\0';
+			props->i++;
 			j++;
 		}
 		i++;
 	}
-	return (tab);
+	return (props);
 }
 
-t_printf	*parse_type(t_printf *tab)
+t_printf		*parse_type(t_printf *props)
 {
 	size_t	i;
 
 	i = 0;
 	while (SPECIFIERS[i] != '\0')
 	{
-		if (SPECIFIERS[i] == tab->raw_string[tab->i])
-			tab->type = SPECIFIERS[i];
+		if (SPECIFIERS[i] == props->raw_string[props->i])
+			props->type = SPECIFIERS[i];
 		i++;
 	}
-	return (tab);
+	return (props);
 }

@@ -6,29 +6,29 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:04:53 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:04:55 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:10:38 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	dissection(t_printf *tab)
+int	dissection(t_printf *props)
 {
-	if (ft_strcmp(tab->raw_string, "%") == 0)
+	if (ft_strcmp(props->raw_string, "%") == 0)
 		return (0);
-	while (tab->raw_string[tab->i] != '\0')
+	while (props->raw_string[props->i] != '\0')
 	{
-		if (tab->raw_string[tab->i] == '%')
+		if (props->raw_string[props->i] == '%')
 		{
-			reinit(tab);
-			handler(tab);
+			reinit(props);
+			handler(props);
 		}
 		else
 		{
-			write(1, &tab->raw_string[tab->i], 1);
-			tab->ret++;
+			write(1, &props->raw_string[props->i], 1);
+			props->ret++;
 		}
-		tab->i++;
+		props->i++;
 	}
-	return (tab->ret);
+	return (props->ret);
 }

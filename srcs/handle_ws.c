@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:06:30 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 22:06:31 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:17:59 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,28 @@ static wchar_t	*wstrdup(wchar_t *str)
 	return (wstrndup(str, len));
 }
 
-static t_printf	*do_null(t_printf *tab)
+static t_printf	*do_null(t_printf *props)
 {
 	wchar_t		*s;
 	int			i;
 
 	i = 0;
 	s = wstrdup(L"(null)");
-	if (tab->precision > -1)
+	if (props->precision > -1)
 	{
-		while (s[i] && tab->precision-- > 0)
-			put_wchar_ret(s[i++], tab);
+		while (s[i] && props->precision-- > 0)
+			put_wchar_ret(s[i++], props);
 	}
 	else
 	{
 		while (s[i])
-			put_wchar_ret(s[i++], tab);
+			put_wchar_ret(s[i++], props);
 	}
 	free(s);
-	return (tab);
+	return (props);
 }
 
-t_printf			*handle_ws(t_printf *tab)
+t_printf		*handle_ws(t_printf *props)
 {
 	wchar_t		*s;
 	int			i;
@@ -84,21 +84,21 @@ t_printf			*handle_ws(t_printf *tab)
 
 	i = 0;
 	len = 0;
-	if (!(s = (wchar_t *)va_arg(tab->args, wchar_t *)))
-		return (do_null(tab));
+	if (!(s = (wchar_t *)va_arg(props->args, wchar_t *)))
+		return (do_null(props));
 	while (s[i] && !(j = 0))
 	{
-		if (tab->precision > -1 && (len + char_len(s[i])) > tab->precision)
+		if (props->precision > -1 && (len + char_len(s[i])) > props->precision)
 			break ;
 		len += char_len(s[i++]);
 	}
-	if (tab->flags[3] == '0' && tab->flags[0] != '-')
-		put_filling(tab, '0', tab->width - len, 1);
-	else if (tab->flags[0] != '-')
-		put_filling(tab, ' ', tab->width - len, 1);
+	if (props->flags[3] == '0' && props->flags[0] != '-')
+		put_filling(props, '0', props->width - len, 1);
+	else if (props->flags[0] != '-')
+		put_filling(props, ' ', props->width - len, 1);
 	while (j < i)
-		put_wchar_ret(s[j++], tab);
-	if (tab->flags[0] == '-')
-		put_filling(tab, ' ', tab->width - len, 1);
-	return (tab);
+		put_wchar_ret(s[j++], props);
+	if (props->flags[0] == '-')
+		put_filling(props, ' ', props->width - len, 1);
+	return (props);
 }
