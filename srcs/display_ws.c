@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 19:25:54 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:20:39 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static wchar_t	*wstrdup(wchar_t *str)
 	return (wstrndup(str, len));
 }
 
-static t_tab	*do_null(t_tab *tab)
+static t_printf	*do_null(t_printf *tab)
 {
 	wchar_t		*s;
 	int			i;
@@ -75,7 +75,7 @@ static t_tab	*do_null(t_tab *tab)
 	return (tab);
 }
 
-t_tab			*display_ws(t_tab *tab)
+t_printf			*handle_ws(t_printf *tab)
 {
 	wchar_t		*s;
 	int			i;

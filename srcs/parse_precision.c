@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_precision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:45:26 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 00:16:10 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 20:18:45 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_tab	*parse_precision(t_tab *tab)
+t_printf	*parse_precision(t_printf *tab)
 {
 	while (tab->f_treat[tab->i] == '.')
 	{

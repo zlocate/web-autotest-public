@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   reinitialize.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:58:20 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 00:18:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2020/12/03 20:26:23 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_tab	*reinitialize(t_tab *tab)
+t_printf	*reinit(t_printf *tab)
 {
 	tab->specifier_flag = '\0';
 	tab->convert[0] = '\0';

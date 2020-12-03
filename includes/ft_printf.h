@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 17:52:26 by rczarfun          #+#    #+#             */
-/*   Updated: 2020/12/03 19:39:27 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:26:23 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 ** i: position of read in format string.
 */
 
-typedef struct	s_tab
+typedef struct	s_printf
 {
 	const char	*format;
 	char		*f_copy;
@@ -45,32 +45,32 @@ typedef struct	s_tab
 	char		specifier_flag;
 	char		convert[6];
 	char		argument_flag[2];
-}				t_tab;
+}				t_printf;
 
 int				ft_printf(const char *format, ...);
-int				treatement(t_tab *tab);
-int				parser(t_tab *tab);
+int				treatement(t_printf *tab);
+int				parser(t_printf *tab);
 
-t_tab			*initialize(t_tab *tab);
-t_tab			*reinitialize(t_tab *tab);
+t_printf		*init(t_printf *tab);
+t_printf		*reinit(t_printf *tab);
 
-t_tab			*parse_convert(t_tab *tab);
-t_tab			*parse_field_width(t_tab *tab);
-t_tab			*parse_precision(t_tab *tab);
-t_tab			*parse_arguments(t_tab *tab);
-t_tab			*parse_specifier(t_tab *tab);
-t_tab			*switch_display(t_tab *tab);
+t_printf		*parse_convert(t_printf *tab);
+t_printf		*parse_field_width(t_printf *tab);
+t_printf		*parse_precision(t_printf *tab);
+t_printf		*parse_arguments(t_printf *tab);
+t_printf		*parse_specifier(t_printf *tab);
 
-t_tab			*display_d(t_tab *tab);
-t_tab			*display_s(t_tab *tab);
-t_tab			*display_c(t_tab *tab);
-t_tab			*display_u(t_tab *tab);
-t_tab			*display_x(t_tab *tab);
-t_tab			*display_o(t_tab *tab);
-t_tab			*display_p(t_tab *tab);
-t_tab			*display_ws(t_tab *tab);
-t_tab			*display_other(t_tab *tab);
-void			display_wchar(wint_t c, t_tab *tab);
-void			display_gap(t_tab *tab, char c, int len, int update_len);
+t_printf		*handler(t_printf *tab);
+t_printf		*handle_d(t_printf *tab);
+t_printf		*handle_s(t_printf *tab);
+t_printf		*handle_c(t_printf *tab);
+t_printf		*handle_u(t_printf *tab);
+t_printf		*handle_x(t_printf *tab);
+t_printf		*handle_o(t_printf *tab);
+t_printf		*handle_p(t_printf *tab);
+t_printf		*handle_ws(t_printf *tab);
+t_printf		*handle_other(t_printf *tab);
+void			display_wchar(wint_t c, t_printf *tab);
+void			display_gap(t_printf *tab, char c, int len, int update_len);
 
 #endif

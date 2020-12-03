@@ -6,13 +6,13 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:45:37 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/02 15:19:15 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:21:41 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_tab	*parse_specifier(t_tab *tab)
+t_printf	*parse_specifier(t_printf *tab)
 {
 	size_t	i;
 

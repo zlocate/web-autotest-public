@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 18:40:25 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 19:25:51 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:18:45 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void		oct_1(wint_t c)
 	write(1, &c, 1);
 }
 
-void			display_wchar(wint_t c, t_tab *tab)
+void			display_wchar(wint_t c, t_printf *tab)
 {
 	if (c <= 127)
 	{

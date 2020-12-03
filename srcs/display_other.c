@@ -6,13 +6,13 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 16:01:33 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 19:25:41 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:20:50 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_tab	*display_percent(t_tab *tab)
+static t_printf	*display_percent(t_printf *tab)
 {
 	if (tab->convert[3] == '0' && tab->precision <= 0 && !tab->convert[0])
 	{
@@ -30,7 +30,7 @@ static t_tab	*display_percent(t_tab *tab)
 	return (tab);
 }
 
-t_tab			*display_other(t_tab *tab)
+t_printf			*handle_other(t_printf *tab)
 {
 	if (tab->f_treat[tab->i] == '%')
 	{

@@ -6,13 +6,13 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 02:46:02 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 19:24:41 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:19:46 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_tab			*display_c(t_tab *tab)
+t_printf			*handle_c(t_printf *tab)
 {
 	wint_t		c;
 

@@ -6,7 +6,7 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:30:20 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 19:25:30 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:20:15 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void			print_leading_zero(uintmax_t num, char hash)
 		write(1, "0", 1);
 }
 
-static uintmax_t	get_num(t_tab *tab)
+static uintmax_t	get_num(t_printf *tab)
 {
 	uintmax_t	num;
 
@@ -42,7 +42,7 @@ static uintmax_t	get_num(t_tab *tab)
 	return (num);
 }
 
-static t_tab		*print_u(t_tab *tab, uintmax_t num, char *str, int left)
+static t_printf		*print_u(t_printf *tab, uintmax_t num, char *str, int left)
 {
 	int			not_blank;
 	int			num_width;
@@ -65,7 +65,7 @@ static t_tab		*print_u(t_tab *tab, uintmax_t num, char *str, int left)
 	return (tab);
 }
 
-t_tab				*display_o(t_tab *tab)
+t_printf				*handle_o(t_printf *tab)
 {
 	char		*str;
 	uintmax_t	num;

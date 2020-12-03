@@ -6,13 +6,13 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:49:36 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 19:25:20 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:18:45 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	display_gap(t_tab *tab, char c, int len, int update_len)
+void	display_gap(t_printf *tab, char c, int len, int update_len)
 {
 	char	*str;
 

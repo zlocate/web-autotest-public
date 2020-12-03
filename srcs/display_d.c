@@ -6,13 +6,13 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 19:24:55 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:19:00 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static intmax_t	get_num(t_tab *tab)
+static intmax_t	get_num(t_printf *tab)
 {
 	intmax_t	num;
 
@@ -48,7 +48,7 @@ static int		get_tens(intmax_t num)
 	return (tens);
 }
 
-static char		get_negatvity_placeholder(t_tab *tab, int is_negative)
+static char		get_negatvity_placeholder(t_printf *tab, int is_negative)
 {
 	char	*tmp;
 
@@ -62,7 +62,7 @@ static char		get_negatvity_placeholder(t_tab *tab, int is_negative)
 	return ('\0');
 }
 
-static t_tab	*do_d(t_tab *tab, intmax_t num, int num_width, int align_left)
+static t_printf	*do_d(t_printf *tab, intmax_t num, int num_width, int align_left)
 {
 	int			not_blank;
 	char		negatvity_placeholder;
@@ -91,7 +91,7 @@ static t_tab	*do_d(t_tab *tab, intmax_t num, int num_width, int align_left)
 	return (tab);
 }
 
-t_tab			*display_d(t_tab *tab)
+t_printf			*handle_d(t_printf *tab)
 {
 	intmax_t	num;
 	int			num_width;

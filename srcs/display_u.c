@@ -6,13 +6,13 @@
 /*   By: rczarfun <rczarfun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:41:03 by dhojt             #+#    #+#             */
-/*   Updated: 2020/12/03 19:25:59 by rczarfun         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:19:55 by rczarfun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static uintmax_t	get_num(t_tab *tab)
+static uintmax_t	get_num(t_printf *tab)
 {
 	uintmax_t	num;
 
@@ -46,7 +46,7 @@ static int			get_tens(uintmax_t num)
 	return (tens);
 }
 
-static t_tab		*do_u(t_tab *tab, uintmax_t num, int num_width, int left)
+static t_printf		*do_u(t_printf *tab, uintmax_t num, int num_width, int left)
 {
 	int			not_blank;
 
@@ -63,7 +63,7 @@ static t_tab		*do_u(t_tab *tab, uintmax_t num, int num_width, int left)
 	return (tab);
 }
 
-t_tab				*display_u(t_tab *tab)
+t_printf				*handle_u(t_printf *tab)
 {
 	uintmax_t	num;
 	int			num_width;
