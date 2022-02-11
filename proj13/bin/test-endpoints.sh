@@ -12,10 +12,6 @@ function check(){
 	fi
 }
 
-echo http_get_test
-node web-autotest-public/http_get_test.js
-check
-
-echo http_post_test
-node web-autotest-public/http_post_test.js
+npm install -g newman
+newman run https://www.getpostman.com/collections/90361e4f436c6d5bf7be --color on
 check

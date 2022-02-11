@@ -12,5 +12,7 @@ function check(){
 	fi
 }
 
-node web-autotest-public/proj13.js
+npm install -g pnpm
+pnpm i --frozen-lockfile --prefix web-autotest-public/
+node web-autotest-public/proj13/test-config.js
 check
