@@ -12,6 +12,9 @@ function check(){
 	fi
 }
 
+echo 'до 14.03 сдается по старому флоу'
+exit 0
+
 npm install -g pnpm
 pnpm i --frozen-lockfile --prefix web-autotest-public/
 node web-autotest-public/proj14/test-config.js
