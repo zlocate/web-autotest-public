@@ -13,5 +13,5 @@ function check(){
 }
 
 npm install -g newman
-newman run https://www.getpostman.com/collections/ebc7f98625878907b2c3 --color on
+timeout 60 bash web-autotest-public/proj13/bin/newman.sh
 check

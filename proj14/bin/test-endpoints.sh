@@ -16,5 +16,5 @@ echo 'до 14.03 сдается по старому флоу'
 exit 0
 
 npm install -g newman
-newman run https://www.getpostman.com/collections/155d834872acb2acab87 --color on
+timeout 60 bash web-autotest-public/proj14/bin/newman.sh
 check
