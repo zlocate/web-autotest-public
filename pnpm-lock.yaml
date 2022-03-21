@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   eslint: ^8.8.0
+  exec-sh: ^0.4.0
   glob: ^7.2.0
   mongoose: ^6.1.9
   simple-git: ^3.1.1
@@ -9,6 +10,7 @@ specifiers:
 
 dependencies:
   eslint: 8.8.0
+  exec-sh: 0.4.0
   glob: 7.2.0
   mongoose: 6.1.9
   simple-git: 3.1.1
@@ -316,6 +318,10 @@ packages:
   /esutils/2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /exec-sh/0.4.0:
+    resolution: {integrity: sha512-BgAFra+J+hK/wquyWchMiqgaxSv1ec2c+//DRSePlF3NLx/tBOmkIkJEc1hWrX4Yis3tzxgv1+FiFs/mmucs/g==}
     dev: false
 
   /fast-deep-equal/3.1.3:
