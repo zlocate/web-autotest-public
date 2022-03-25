@@ -12,9 +12,6 @@ function check(){
 	fi
 }
 
-echo 'до 14.03 сдается по старому флоу'
-exit 0
-
 npm install -g newman
 timeout 60 bash web-autotest-public/proj14/bin/newman.sh
 check
