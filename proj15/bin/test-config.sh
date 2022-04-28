@@ -14,5 +14,5 @@ function check(){
 
 npm install -g pnpm
 pnpm i --frozen-lockfile --prefix web-autotest-public/
-node web-autotest-public/proj14/test-config.js
+node web-autotest-public/proj15/test-config.js
 check
