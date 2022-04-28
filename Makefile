@@ -13,5 +13,8 @@ proj14-test-config:
 proj14-test-endpoints:
 	bash ./web-autotest-public/proj14/bin/test-endpoints.sh
 
+proj15-test-config:
+	bash ./web-autotest-public/proj15/bin/test-config.sh
+
 proj15-test-endpoints:
 	bash ./web-autotest-public/proj15/bin/test-endpoints.sh
