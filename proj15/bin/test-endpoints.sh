@@ -1,17 +1,11 @@
 #!/bin/bash
 
-function print_red(){
-	echo -e "\e[31m$@\e[0m"
-}
-
-function check(){
-	if [[ $? != 0 ]]
-		then
-		print_red "FAILED"
-		exit 1
-	fi
-}
+source web-autotest-public/scripts.sh
 
 npm install -g newman
-timeout 60 bash web-autotest-public/proj14/bin/newman.sh
-check
+timeout 60 bash web-autotest-public/proj15/bin/newman.sh
+endpoints_exit_code=$?
+node web-autotest-public/proj15/test-server.js
+server_exit_code=$?
+check $endpoints_exit_code
+check $server_exit_code
