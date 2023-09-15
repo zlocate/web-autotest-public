@@ -2,7 +2,7 @@
 
 source web-autotest-public/scripts.sh
 
-npm install -g newman --ignore-engines
+install_newman
 timeout 60 bash web-autotest-public/proj15/bin/newman.sh
 endpoints_exit_code=$?
 node web-autotest-public/proj15/test-server.js
